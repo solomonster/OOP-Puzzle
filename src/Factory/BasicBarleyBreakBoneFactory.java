@@ -23,7 +23,7 @@ public class BasicBarleyBreakBoneFactory  {
    // @Override
 
     public List<Tile> createBones(GameField field) {
-        List<Tile> BoneList = new ArrayList();
+        List<Tile> TileList = new ArrayList();
 
         int[] availableBlock = {1, 4, 6, 7, 10, 11, 13};
 
@@ -37,34 +37,32 @@ public class BasicBarleyBreakBoneFactory  {
         for (int row = 1; row <= 4; row++) {
             for (int col = 1; col <= 4; col++) {
                 if (count == availableBlock[stick]) {
-                    //field().setBone(new Point(col, row), new StickyBone(), String.valueOf(count));
-                    SimpleTile newBone = new SimpleTile(field);
-                    newBone.setPosition(new TilePosition(row, col));
-                    newBone.setLabel(String.valueOf(count));
-                    BoneList.add(newBone);
+ 
+                    SimpleTile newTile = new SimpleTile(field);
+                    newTile.setPosition(new TilePosition(row, col));
+                    newTile.setLabel(String.valueOf(count));
+                    TileList.add(newTile);
 
                 } else if (count == availableBlock[block]) {
-                    //field().setBone(new Point(col, row), new FixedTile(), String.valueOf(count));
-                    FixedTile newBone = new FixedTile(field);
-                    newBone.setPosition(new TilePosition(row, col));
-                    newBone.setLabel(String.valueOf(count));
-                    BoneList.add(newBone);
+                    FixedTile newTile = new FixedTile(field);
+                    newTile.setPosition(new TilePosition(row, col));
+                    newTile.setLabel(String.valueOf(count));
+                    TileList.add(newTile);
                 } else if (count < 16) {
-                    //field().setBone(new Point(col, row), new SimpleTile() , String.valueOf(count));
-                    SimpleTile newBone = new SimpleTile(field);
-                    newBone.setPosition(new TilePosition(row, col));
-                    newBone.setLabel(String.valueOf(count));
-                    BoneList.add(newBone);
+                    SimpleTile newTile = new SimpleTile(field);
+                    newTile.setPosition(new TilePosition(row, col));
+                    newTile.setLabel(String.valueOf(count));
+                    TileList.add(newTile);
                 } else {
-                    EmptyTile newBone = new EmptyTile(field);
-                    newBone.setPosition(new TilePosition(row, col));
-                    newBone.setLabel(String.valueOf(count));
-                    BoneList.add(newBone);
+                    EmptyTile newTile = new EmptyTile(field);
+                    newTile.setPosition(new TilePosition(row, col));
+                    newTile.setLabel(String.valueOf(count));
+                    TileList.add(newTile);
                 }
                 count++;
             }
         }
 
-        return BoneList;
+        return TileList;
     }
 }

@@ -31,11 +31,11 @@ public class GameField {
     }
 
     //Список костяшек
-    private List<Tile> BoneList = new ArrayList();
+    private List<Tile> TileList = new ArrayList();
 
 
-    Tile bone(TilePosition pos) {
-        for (Tile item : this.BoneList) {
+    Tile tile(TilePosition pos) {
+        for (Tile item : this.TileList) {
             if (item.position().equals(pos)) {
                 return item;
             }
@@ -44,31 +44,31 @@ public class GameField {
         return null;
     }
 
-    void setBone(int col, int row, Tile bone, String number) {
+    void setBone(int col, int row, Tile tile, String number) {
 
-        bone.setPosition(new TilePosition(row, col));
+        tile.setPosition(new TilePosition(row, col));
 
-        if (bone instanceof EmptyTile) {
+        if (tile instanceof EmptyTile) {
         }
-        else if (bone instanceof FixedTile) {
-            ((FixedTile) bone).setLabel(number); }
-        else if (bone instanceof SimpleTile) {
-            ((SimpleTile) bone).setLabel(number);}
+        else if (tile instanceof FixedTile) {
+            ((FixedTile) tile).setLabel(number); }
+        else if (tile instanceof SimpleTile) {
+            ((SimpleTile) tile).setLabel(number);}
 
-        BoneList.add(bone);
+        TileList.add(tile);
 
     }
 
-    void setBones(List<Tile> List) {
-        BoneList.clear();
-        BoneList = List;
+    void setTiles(List<Tile> List) {
+        TileList.clear();
+        TileList = List;
 
     }
 
     public boolean move(TilePosition p) {
-        Tile current = bone(p);
+        Tile current = tile(p);
         Tile emptyBone;
-        for (Tile item : this.BoneList) {
+        for (Tile item : this.TileList) {
             if (item instanceof EmptyTile) {
                 emptyBone = item;
          
@@ -99,7 +99,7 @@ public class GameField {
 
             for (int col = 1; col <= width(); col++) {
                 TilePosition position = new TilePosition(col, row);
-                Tile current = bone(position);//.label().getNumber();
+                Tile current = tile(position);
                 int Number = -1;
                 if (current instanceof EmptyTile) {
                     if (col != 4 & row != 4)
@@ -153,9 +153,9 @@ public class GameField {
         return false;
     }
 
-    public List<Tile> getBones() {
+    public List<Tile> getTiles() {
 
-        return this.BoneList;
+        return this.TileList;
     }
     
     
@@ -175,9 +175,9 @@ public class GameField {
             Numbers.add(fistnumber);
             Numbers.add(secondnumber);
 
-            Tile first = BoneList.get(fistnumber);
+            Tile first = TileList.get(fistnumber);
 
-            Tile second = BoneList.get(secondnumber);
+            Tile second = TileList.get(secondnumber);
 
             if (first instanceof FixedTile || second instanceof FixedTile)
                 continue;
@@ -213,9 +213,9 @@ public class GameField {
             Numbers.add(fistnumber);
             Numbers.add(secondnumber);
 
-            Tile first = BoneList.get(fistnumber);
+            Tile first = TileList.get(fistnumber);
 
-            Tile second = BoneList.get(secondnumber);
+            Tile second = TileList.get(secondnumber);
 
             if (first instanceof FixedTile || second instanceof FixedTile)
                 continue;
@@ -237,12 +237,12 @@ public class GameField {
     }
 
     public void clear() {
-        BoneList.clear();
+        TileList.clear();
     }
 
     private void removeBone(TilePosition pos) {
 
-        BoneList.remove(bone(pos));
+        TileList.remove(tile(pos));
     }
 
 

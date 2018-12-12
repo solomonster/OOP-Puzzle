@@ -41,9 +41,9 @@ public class GameModel {
 
         field().setSize(4, 4);
 
-        List<Tile> BoneList = _BasicBarleyBreakBoneFactory.createBones(field());
+        List<Tile> TileList = _BasicBarleyBreakBoneFactory.createBones(field());
 
-        field().setBones(BoneList);
+        field().setTiles(TileList);
 
     }
 

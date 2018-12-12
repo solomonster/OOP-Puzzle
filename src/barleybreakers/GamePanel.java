@@ -91,12 +91,12 @@ public class GamePanel extends JFrame {
 
         fieldPanel.removeAll();
 
-        List<Tile> bones = _model.field().getBones();
+        List<Tile> tiles = _model.field().getTiles();
 
         for (int row = 1; row <= _model.field().height(); row++) {
 
             for (int col = 1; col <= _model.field().width(); col++) {
-                Tile temp = getBone(bones, col, row);
+                Tile temp = getTiles(tiles, col, row);
 
                 if (temp != null) {
 
@@ -141,8 +141,8 @@ public class GamePanel extends JFrame {
         fieldPanel.validate();
     }
 
-    public Tile getBone(List<Tile> bones, double x, double y) {
-        for (Tile item : bones) {
+    public Tile getTiles(List<Tile> tiles, double x, double y) {
+        for (Tile item : tiles) {
             if (item.position().row() == x && item.position().column() == y) {
                 return item;
             }
